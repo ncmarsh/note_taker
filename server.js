@@ -16,8 +16,18 @@ app.get("/notes", function(req, res) {
 });
 
 // Displays all notes
-app.get("/api/notes", function(req, res) {
+app.get("/api/notes/", function(req, res) {
   return res.json(notesdb);
+});
+
+// Save new note, add to db and return the new note to the client
+// take db.json and convert to an array, then push new note into the array, then take new array and put back to db.json
+// fs, stringify, parse
+app.post("/api/notes", function(req, res) {
+  console.log(req.body);
+  res.send(notesdb);
+  console.log(notesdb);
+  // this is console logging the notesdb, but it's not saving the input from the client side
 });
 
 // Default route to home page
