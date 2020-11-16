@@ -1,5 +1,5 @@
-const path = require("path");
 const fs = require("fs");
+const uniqid = require("uniqid");
 const notesdb = require("../db/db.json");
 const { stringify } = require("querystring");
 
@@ -14,7 +14,7 @@ module.exports = function(app) {
         let newNote = {
             title: req.body.title,
             text: req.body.text,
-            id: 3
+            id: uniqid()
         };
         console.log(newNote);
         notesdb.push(newNote);
@@ -42,7 +42,7 @@ module.exports = function(app) {
         }
       
         return res.json(false);
-      });
+    });
 
     // Deletes a note: read all notes from the db.json file, remove the note with the matching id, and rewrites notes in db.json file
     app.delete("/api/notes/:id", function(req, res) {
@@ -51,11 +51,22 @@ module.exports = function(app) {
         console.log(deleteThisNote);
 
         for (let i = 0; i < notesdb.length; i++) {
+            console.log(notesdb[i].id);
             if (deleteThisNote === notesdb[i].id) {
-                return res.json(notesdb[i]);
+                // console.log("match");
+                notesdb.splice(i, 1);
+                console.log(notesdb);
+                fs.writeFile("./db/db.json", JSON.stringify(notesdb), function(err) {
+                    if(err) {
+                        return console.log(err);
+                    }
+                    // Not working here but works on the view note code
+                    // res.json(true);
+                    console.log("The file was updated!");
+                })
+                // return res.json(notesdb);
             }
         }
-
         return res.json(false);
     })
 }
