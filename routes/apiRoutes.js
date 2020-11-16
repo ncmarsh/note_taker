@@ -11,9 +11,12 @@ module.exports = function(app) {
     
     // Saves new note, adds to db and updates the db.json file and the notes list on the browser
     app.post("/api/notes", function(req, res) {
-        let newNote = req.body;
+        let newNote = {
+            title: req.body.title,
+            text: req.body.text,
+            id: 3
+        };
         console.log(newNote);
-        console.log(notesdb);
         notesdb.push(newNote);
         console.log(notesdb);
     
@@ -25,4 +28,34 @@ module.exports = function(app) {
             console.log("The file was updated!");
         })
     });
+
+    // Displays a single note when clicked on
+    app.get("/api/notes/:id", function(req, res) {
+        let viewThisNote = req.params.id;
+      
+        console.log(viewThisNote);
+      
+        for (let i = 0; i < notesdb.length; i++) {
+            if (viewThisNote === notesdb[i].id) {
+                return res.json(notesdb[i]);
+            }
+        }
+      
+        return res.json(false);
+      });
+
+    // Deletes a note: read all notes from the db.json file, remove the note with the matching id, and rewrites notes in db.json file
+    app.delete("/api/notes/:id", function(req, res) {
+        let deleteThisNote = req.params.id;
+
+        console.log(deleteThisNote);
+
+        for (let i = 0; i < notesdb.length; i++) {
+            if (deleteThisNote === notesdb[i].id) {
+                return res.json(notesdb[i]);
+            }
+        }
+
+        return res.json(false);
+    })
 }
