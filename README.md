@@ -38,7 +38,7 @@
 
 ## Roadmap
 
-
+To further this project, I would like users to be able to edit an existing note. 
 
 ## Links
 
