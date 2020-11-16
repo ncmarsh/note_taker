@@ -1,6 +1,9 @@
 # Note Taker
 
-
+![GitHub top language](https://img.shields.io/github/languages/top/ncmarsh/note_taker)
+![GitHub language count](https://img.shields.io/github/languages/count/ncmarsh/note_taker)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/ncmarsh/note_taker)
+![npm](https://img.shields.io/npm/v/express)
 
 ## Table of Contents
 
@@ -22,7 +25,11 @@
 
 ## Languages and Concepts
 
-
+- JavaScript
+- jQuery
+- Node.js
+- Express.js
+- Uniqid npm
 
 ## Installation
 
