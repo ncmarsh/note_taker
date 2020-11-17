@@ -45,7 +45,7 @@
 
 ## Roadmap
 
-To further this project, I would like users to be able to edit an existing note. 
+To further this project, I would like users to be able to edit an existing note and a clear all notes function. I would like the notes to have the date they were written notated on the side and for the user to be able to categorize their notes: perhaps some pertain to home, work, school, shopping, note to self etc. Then with these features, I could add filters so the user could see by date or date range or by category.
 
 ## Links
 
