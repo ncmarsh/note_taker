@@ -53,18 +53,14 @@ module.exports = function(app) {
         for (let i = 0; i < notesdb.length; i++) {
             console.log(notesdb[i].id);
             if (deleteThisNote === notesdb[i].id) {
-                // console.log("match");
                 notesdb.splice(i, 1);
                 console.log(notesdb);
                 fs.writeFile("./db/db.json", JSON.stringify(notesdb), function(err) {
                     if(err) {
                         return console.log(err);
                     }
-                    // Not working here but works on the view note code
-                    // res.json(true);
                     console.log("The file was updated!");
                 })
-                // return res.json(notesdb);
             }
         }
         return res.json(false);
